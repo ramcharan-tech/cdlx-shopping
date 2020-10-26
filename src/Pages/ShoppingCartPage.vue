@@ -16,9 +16,8 @@ export default {
   components: { ShoppingCartContainer, Fragment },
   methods: {
     buynow() {
-      this.$store.state.cart.forEach(function(el){window.Cdlx.q.push([
-        "add_event",
-        {
+      this.$store.state.cart.forEach(function(el){window.dataLayer.push({'event': 'add_event',
+       'ecommerce': {
           key: "Purchase",
           segmentation: {
             id: el.id,
@@ -27,8 +26,8 @@ export default {
             category:el.category,
             price:Math.round(el.price)
           },
-        },
-      ]);})
+        }
+      });})
       router.push({ path: "/thankyou" });
     },
   },

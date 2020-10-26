@@ -60,6 +60,18 @@
         methods: {
             onAddProductToCart() {
                 this.$store.commit(ADD_PRODUCT_TO_CART, this.product);
+                window.dataLayer.push({'event': 'add_event',
+       'ecommerce': {
+          key: "ec:addTocart",
+          segmentation: {
+            id: this.product.id,
+            name: this.product.brand,
+            title:this.product.title,
+            category:this.product.category,
+            price:Math.round(this.product.price)
+          },
+        }
+      });
             }
         }
     }
