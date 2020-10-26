@@ -51,11 +51,111 @@
       })();
     </script> -->
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5DWRXCD');</script>
+      <script type="text/javascript">
+      function getTagConfig() {
+        return [
+          {
+            eventName: "redeem button click",
+            category: "redemption",
+            eventTrigger: "byClassName",
+            eventElement: "redeem-button",
+            eventSelector: ".redeem-button",
+            eventType: "click",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+          {
+            eventName: "register button click",
+            eventTrigger: "byClassName",
+            eventElement: "register-button",
+            eventSelector: ".register-button",
+            eventType: "click",
+            category: "register",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+          {
+            eventName: "register button click",
+            eventTrigger: "byClassName",
+            eventElement: "signup-button",
+            eventSelector: ".signup-button",
+            eventType: "click",
+            category: "register",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+          {
+            eventName: "register button click",
+            eventTrigger: "byClassName",
+            eventElement: "signup-button-class",
+            eventSelector: ".signup-button-class",
+            eventType: "click",
+            category: "register",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+          {
+            eventName: "redeem button click by id",
+            eventTrigger: "byId",
+            eventElement: "redeem-button",
+            eventSelector: "#redeem-button",
+            eventType: "click",
+            category: "redemption",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+        ];
+      }
+      </script>
+<script type="text/javascript">
+      //some default pre init
+      var Cdlx = Cdlx || {};
+      Cdlx.q = Cdlx.q || [];
+      var _caQ = Cdlx.q;
+      var _caPush = Cdlx.q.push;
+
+      //provide cdlx initialization parameters
+      Cdlx.app_key = "10-26-ma-app-key";
+      Cdlx.url = "http://localhost:5000";
+      // let trackerUrl = "https://mp-analytics-dev.cardlytics.com/js/index.js";
+      Cdlx.debug = true;
+      Cdlx.force_post = true;
+      Cdlx.isPureConsentBased = true;
+      Cdlx.consentsAllowed = ["views", "all_links"];
+      Cdlx.q.push(["configure_track_click_events", getTagConfig()]);
+      Cdlx.q.push([
+        "setContextInfo",
+        {
+          userId: "user123",
+          email: "abc@bbc.com",
+          advertiserId: "advertiserId",
+        },
+      ]);
+
+      //load Cdlx script asynchronously
+      (function () {
+        var cly = document.createElement("script");
+        cly.type = "text/javascript";
+        cly.async = true;
+        cly.src = "https://mp-analytics-qa.cardlytics.com/js/index.js";
+
+        cly.onload = function () {
+          Cdlx.init();
+        };
+        let s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(cly, s);
+      })();
+    </script>
   <!-- End Google Tag Manager -->
   </head>
   <body>
