@@ -90,7 +90,18 @@ export default {
         button: "Done!",
       });
       this.$store.commit(Types.ADD_PRODUCT_TO_CART, this.product);
-      
+      window.Cdlx.q.push({'event': 'add_event',
+       'ecommerce': {
+          key: "ec:addTocart",
+          segmentation: {
+            id: this.product.id,
+            name: this.product.brand,
+            title:this.product.title,
+            category:this.product.category,
+            price:Math.round(this.product.price)
+          },
+        }
+      });
       // dataLayer.push({
       //   event: "click",
       //   ecommerce: {
