@@ -60,7 +60,7 @@
         methods: {
             onAddProductToCart() {
                 this.$store.commit(ADD_PRODUCT_TO_CART, this.product);
-		Cdlx.q.push({'event': 'add_event',
+		window.Cdlx.q.push({'event': 'add_event',
        'ecommerce': {
           key: "ec:addTocart",
           segmentation: {
