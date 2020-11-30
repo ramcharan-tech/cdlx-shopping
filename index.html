@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="icon" href="/favicon.ico"><title>vueshopping</title><script>function getTagConfig() {
+        return [
+          {
+            eventName: "Play video",
+            category: "video",
+            eventSelector: ".play-button",
+            eventType: "click",
+            eventContext: {
+              hitType: "event",
+              eventCategory: "Videos",
+              eventAction: "play",
+              eventLabel: "Fall Campaign",
+            },
+          },
+          {
+            eventName: "redeem button click",
+            category: "redemption",
+            eventTrigger: "byClassName",
+            eventElement: "redeem-button",
+            eventSelector: ".redeem-button",
+            eventType: "click",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+          {
+            eventName: "register button click",
+            eventTrigger: "byClassName",
+            eventElement: "register-button",
+            eventSelector: ".register-button",
+            eventType: "click",
+            category: "register",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+          {
+            eventName: "register button click",
+            eventTrigger: "byClassName",
+            eventElement: "signup-button",
+            eventSelector: ".signup-button",
+            eventType: "click",
+            category: "register",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+          {
+            eventName: "register button click",
+            eventTrigger: "byClassName",
+            eventElement: "signup-button-class",
+            eventSelector: ".signup-button-class",
+            eventType: "click",
+            category: "register",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+          {
+            eventName: "redeem button click by id",
+            eventTrigger: "byId",
+            eventElement: "redeem-button",
+            eventSelector: "#redeem-button",
+            eventType: "click",
+            category: "redemption",
+            eventContext: {
+              a: "a1",
+              b: "b1",
+            },
+          },
+        ];
+      }
+      //send event on button click
+      function clickEvent(ob) {
+        // ["dedicatedName", 1,2,3]
+        // {}
+        Cdlx.q.push([
+          "push_events",
+          {
+            key: "AddToCart",
+            dgsdf: "dgfd",
+            segmentation: {
+              id: ob.id,
+            },
+          },
+        ]);
+        // Cdlx.q.push({
+        //   key: "AddToCart",
+        //   segmentation: {
+        //     id: ob.id,
+        //   },
+        // });
+      }
+      function addToCart(ob) {
+        Cdlx.q.push([
+          "push_events",
+          {
+            key: "addToCart",
+            segmentation: {
+              id: ob.id,
+              cartValue: 200,
+              ItemName: "laptop",
+            },
+          },
+        ]);
+      }</script><script>//some default pre init
+      var Cdlx = Cdlx || {};
+      Cdlx.q = Cdlx.q || [];
+      var __ca = (data) => Cdlx.q.push(data);
+      //provide cdlx initialization parameters
+      Cdlx.app_key = "Costa-Coffee-5e42906ee";
+      Cdlx.url = "https://mp-analytics-dev.cardlytics.com/api";
+      // let trackerUrl = "https://mp-analytics-dev.cardlytics.com/js/index.js";
+      Cdlx.debug = true;
+      Cdlx.force_post = true;
+      Cdlx.consentsAllowed = [
+        "scrolls",
+        "views",
+        "all_clicks",
+        "all_links",
+        "sessions",
+        "query_params",
+      ];
+      // start pushing function calls to queue
+      // track sessions automatically
+      // Cdlx.q.push(["auto_track_sessions"]);
+      // track sessions automatically
+      // Cdlx.q.push(["track_pageview"]);
+      // Cdlx.q.push(["auto_track_links"]);
+      Cdlx.q.push(["track_custom_events", getTagConfig()]);
+      Cdlx.q.push([
+        "setContextInfo",
+        {
+          userId: "user123",
+          email: "abc@bbc.com",
+          advertiserId: "advertiserId",
+        },
+      ]);
+      //load Cdlx script asynchronously
+      (function() {
+        var cly = document.createElement("script");
+        cly.type = "text/javascript";
+        cly.async = true;
+        //enter url of script here
+        // cly.src = Cdlx.url + "/analytics-js/tracker.js";
+        // cly.src = trackerUrl;
+        // cly.src = "../src/cdlx-custom-tags.js"; //TODO:
+        // cly.src = "./index.js";
+        cly.src = "https://mp-analytics-qa.cardlytics.com/js/index.js";
+        cly.onload = function() {
+          Cdlx.init();
+        };
+        let s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(cly, s);
+      })();</script><div style="display: none; background-color: red"><iframe src="https://cdlxdemosite.htmlsave.net/"></iframe></div><link href="/css/app.28ff96bd.css" rel="preload" as="style"><link href="/css/chunk-vendors.897bc6cb.css" rel="preload" as="style"><link href="/js/app.47fc822e.js" rel="preload" as="script"><link href="/js/chunk-vendors.1a3908cb.js" rel="preload" as="script"><link href="/css/chunk-vendors.897bc6cb.css" rel="stylesheet"><link href="/css/app.28ff96bd.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but vueshopping doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script src="/js/chunk-vendors.1a3908cb.js"></script><script src="/js/app.47fc822e.js"></script></body></html>
