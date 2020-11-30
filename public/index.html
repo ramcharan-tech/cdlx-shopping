@@ -1,59 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <!-- todo inject cdlx/gtm tag script-->
-    <!-- <script type="text/javascript">
-      //some default pre init
-      var Cdlx = Cdlx || {};
-      Cdlx.q = Cdlx.q || [];
-      Window._caQ = Cdlx.q;
 
-      //provide cdlx initialization parameters
-      Cdlx.app_key = "09-14-8b6dc4af50338948b2c54290b6e96591b6595ee2";
-      Cdlx.url = "https://mp-analytics-dev.cardlytics.com";
-      // let trackerUrl = "https://firebasestorage.googleapis.com/v0/b/finance-manager-a3d36.appspot.com/o/tracker.js?alt=media&token=4c17ed35-9f8a-454a-bee3-644772eaab1d";
-      Cdlx.debug = true;
-      Cdlx.force_post = true;
-      //start pushing function calls to queue
-      //track sessions automatically
-      Cdlx.q.push(["track_sessions"]);
-
-      //track sessions automatically
-      Cdlx.q.push(["track_pageview"]);
-
-      //   Cdlx.q.push(["track_clicks"]);
-      Cdlx.q.push(["configure_track_click_events"]);
-
-      //load Cdlx script asynchronously
-      (function () {
-        var cly = document.createElement("script");
-        cly.type = "text/javascript";
-        cly.async = true;
-        //enter url of script here
-        // cly.src = Cdlx.url + "/analytics-js/tracker.js";
-        // cly.src = trackerUrl;
-        // cly.src = "../src/cdlx-custom-tags.js"; //TODO:
-        cly.src = "https://mp-analytics-dev.cardlytics.com/index.js";
-        //cly.src = "http://localhost:1234/index.js";
-        
-
-        cly.onload = function () {
-          Cdlx.init();
-        };
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(cly, s);
-      })();
-    </script> -->
-<!-- Google Tag Manager -->
-      <script type="text/javascript">
+    <!--cdlx site-->
+    <script type="text/javascript">
       function getTagConfig() {
         return [
+          {
+            eventName: "Play video",
+            category: "video",
+            eventSelector: ".play-button",
+            eventType: "click",
+            eventContext: {
+              hitType: "event",
+              eventCategory: "Videos",
+              eventAction: "play",
+              eventLabel: "Fall Campaign",
+            },
+          },
           {
             eventName: "redeem button click",
             category: "redemption",
@@ -116,72 +89,106 @@
           },
         ];
       }
-      </script>
-<script type="text/javascript">
-  //some default pre init
-  var Cdlx = Cdlx || {};
-  Cdlx.q = Cdlx.q || [];
-  var __ca = (data) => Cdlx.q.push(data);
-
-  //provide cdlx initialization parameters
-  Cdlx.app_key = "10-26-ma-app-key";
-  Cdlx.url = "https://mp-analytics-dev.cardlytics.com/api";
-  // let trackerUrl = "https://mp-analytics-dev.cardlytics.com/js/index.js";
-  Cdlx.debug = true;
-  Cdlx.force_post = true;
-  Cdlx.consentsAllowed = [
-    "scrolls",
-    "views",
-    "all_clicks",
-    "all_links",
-    "sessions",
-    "query_params",
-  ];
-  // start pushing function calls to queue
-  // track sessions automatically
-  // Cdlx.q.push(["auto_track_sessions"]);
-
-  // track sessions automatically
-  // Cdlx.q.push(["track_pageview"]);
-
-  // Cdlx.q.push(["auto_track_links"]);
-  Cdlx.q.push(["track_custom_events", getTagConfig()]);
-  Cdlx.q.push([
-    "setContextInfo",
-    {
-      userId: "user123",
-      email: "abc@bbc.com",
-      advertiserId: "advertiserId",
-    },
-  ]);
-
-  //load Cdlx script asynchronously
-  (function () {
-    var cly = document.createElement("script");
-    cly.type = "text/javascript";
-    cly.async = true;
-    //enter url of script here
-    // cly.src = Cdlx.url + "/analytics-js/tracker.js";
-    // cly.src = trackerUrl;
-    // cly.src = "../src/cdlx-custom-tags.js"; //TODO:
-    cly.src = "https://mp-analytics-dev.cardlytics.com/index.js";
-
-    cly.onload = function () {
-      Cdlx.init();
-    };
-    let s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(cly, s);
-  })();
-</script>
-
-<div style="display: none; background-color: red">
-  <!-- <iframe src="https://ads.cdlx.net/page1.html"></iframe> -->
-  <iframe src="https://cdlxdemosite.htmlsave.net/"></iframe>      
-</div>
+      //send event on button click
+      function clickEvent(ob) {
+        // ["dedicatedName", 1,2,3]
+        // {}
+        Cdlx.q.push([
+          "push_events",
+          {
+            key: "AddToCart",
+            dgsdf: "dgfd",
+            segmentation: {
+              id: ob.id,
+            },
+          },
+        ]);
+        // Cdlx.q.push({
+        //   key: "AddToCart",
+        //   segmentation: {
+        //     id: ob.id,
+        //   },
+        // });
+      }
+      function addToCart(ob) {
+        Cdlx.q.push([
+          "push_events",
+          {
+            key: "addToCart",
+            segmentation: {
+              id: ob.id,
+              cartValue: 200,
+              ItemName: "laptop",
+            },
+          },
+        ]);
+      }
+    </script>
+    <!-- <script async src="./cdlx-custom-tags.js"></script> -->
+    <script type="text/javascript">
+      //some default pre init
+      var Cdlx = Cdlx || {};
+      Cdlx.q = Cdlx.q || [];
+      var __ca = (data) => Cdlx.q.push(data);
+      //provide cdlx initialization parameters
+      Cdlx.app_key = "Costa-Coffee-5e42906ee";
+      Cdlx.url = "https://mp-analytics-dev.cardlytics.com/api";
+      // let trackerUrl = "https://mp-analytics-dev.cardlytics.com/js/index.js";
+      Cdlx.debug = true;
+      Cdlx.force_post = true;
+      Cdlx.consentsAllowed = [
+        "scrolls",
+        "views",
+        "all_clicks",
+        "all_links",
+        "sessions",
+        "query_params",
+      ];
+      // start pushing function calls to queue
+      // track sessions automatically
+      // Cdlx.q.push(["auto_track_sessions"]);
+      // track sessions automatically
+      // Cdlx.q.push(["track_pageview"]);
+      // Cdlx.q.push(["auto_track_links"]);
+      Cdlx.q.push(["track_custom_events", getTagConfig()]);
+      Cdlx.q.push([
+        "setContextInfo",
+        {
+          userId: "user123",
+          email: "abc@bbc.com",
+          advertiserId: "advertiserId",
+        },
+      ]);
+      //load Cdlx script asynchronously
+      (function() {
+        var cly = document.createElement("script");
+        cly.type = "text/javascript";
+        cly.async = true;
+        //enter url of script here
+        // cly.src = Cdlx.url + "/analytics-js/tracker.js";
+        // cly.src = trackerUrl;
+        // cly.src = "../src/cdlx-custom-tags.js"; //TODO:
+        // cly.src = "./index.js";
+        cly.src = "https://mp-analytics-qa.cardlytics.com/js/index.js";
+        cly.onload = function() {
+          Cdlx.init();
+        };
+        let s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(cly, s);
+      })();
+    </script>
+    <div style="display: none; background-color: red">
+      <!-- <iframe src="https://ads.cdlx.net/page1.html"></iframe> -->
+      <iframe src="https://cdlxdemosite.htmlsave.net/"></iframe>
+    </div>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
