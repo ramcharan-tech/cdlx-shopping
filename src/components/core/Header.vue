@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <router-link to="/Allphones" class="navbar-brand"  >All Phones</router-link>
-            <router-link to="/Applephones" class="navbar-brand mr-auto" >Apple Phones</router-link>
+            <router-link to="/Applephones" :click="navclicked()" class="navbar-brand mr-auto" >Apple Phones</router-link>
             <div>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -19,6 +19,11 @@
 <script>
     export default {
         name: "Header",
+                methods:{
+           navclicked: function () {
+                console.log("link clicked");
+            }
+        }
     }
 </script>
 

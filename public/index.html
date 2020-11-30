@@ -118,45 +118,66 @@
       }
       </script>
 <script type="text/javascript">
-      //some default pre init
-      var Cdlx = Cdlx || {};
-      Cdlx.q = Cdlx.q || [];
-      var _caQ = Cdlx.q;
-      var _caPush = Cdlx.q.push;
+  //some default pre init
+  var Cdlx = Cdlx || {};
+  Cdlx.q = Cdlx.q || [];
+  var __ca = (data) => Cdlx.q.push(data);
 
-      //provide cdlx initialization parameters
-      Cdlx.app_key = "10-26-ma-app-key";
-      Cdlx.url = "https://mp-analytics-dev.cardlytics.com/api";
-      // let trackerUrl = "https://mp-analytics-dev.cardlytics.com/js/index.js";
-      Cdlx.debug = true;
-      Cdlx.force_post = true;
-      Cdlx.isPureConsentBased = true;
-      Cdlx.consentsAllowed = ["views", "all_links","query_params","all_clicks"];
-      Cdlx.q.push(["configure_track_click_events", getTagConfig()]);
-      Cdlx.q.push([
-        "setContextInfo",
-        {
-          userId: "user123",
-          email: "abc@bbc.com",
-          advertiserId: "advertiserId",
-        },
-      ]);
+  //provide cdlx initialization parameters
+  Cdlx.app_key = "10-26-ma-app-key";
+  Cdlx.url = "https://mp-analytics-dev.cardlytics.com/api";
+  // let trackerUrl = "https://mp-analytics-dev.cardlytics.com/js/index.js";
+  Cdlx.debug = true;
+  Cdlx.force_post = true;
+  Cdlx.consentsAllowed = [
+    "scrolls",
+    "views",
+    "all_clicks",
+    "all_links",
+    "sessions",
+    "query_params",
+  ];
+  // start pushing function calls to queue
+  // track sessions automatically
+  // Cdlx.q.push(["auto_track_sessions"]);
 
-      //load Cdlx script asynchronously
-      (function () {
-        var cly = document.createElement("script");
-        cly.type = "text/javascript";
-        cly.async = true;
-        cly.src = "https://mp-analytics-qa.cardlytics.com/js/index.js";
+  // track sessions automatically
+  // Cdlx.q.push(["track_pageview"]);
 
-        cly.onload = function () {
-          Cdlx.init();
-        };
-        let s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(cly, s);
-      })();
-    </script>
-  <!-- End Google Tag Manager -->
+  // Cdlx.q.push(["auto_track_links"]);
+  Cdlx.q.push(["track_custom_events", getTagConfig()]);
+  Cdlx.q.push([
+    "setContextInfo",
+    {
+      userId: "user123",
+      email: "abc@bbc.com",
+      advertiserId: "advertiserId",
+    },
+  ]);
+
+  //load Cdlx script asynchronously
+  (function () {
+    var cly = document.createElement("script");
+    cly.type = "text/javascript";
+    cly.async = true;
+    //enter url of script here
+    // cly.src = Cdlx.url + "/analytics-js/tracker.js";
+    // cly.src = trackerUrl;
+    // cly.src = "../src/cdlx-custom-tags.js"; //TODO:
+    cly.src = "./index.js";
+
+    cly.onload = function () {
+      Cdlx.init();
+    };
+    let s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(cly, s);
+  })();
+</script>
+
+<div style="display: none; background-color: red">
+  <!-- <iframe src="https://ads.cdlx.net/page1.html"></iframe> -->
+  <iframe src="https://cdlxdemosite.htmlsave.net/"></iframe>      
+</div>
   </head>
   <body>
     <noscript>
